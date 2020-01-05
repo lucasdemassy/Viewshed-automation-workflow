@@ -63,9 +63,9 @@ class ExampleProcessingAlgorithm(QgsProcessingAlgorithm):
     # used when calling the algorithm from another algorithm, or when
     # calling from the QGIS console.
 
-    INPUT_SUMMITS = 'INPUT_SUMMITS'
-    INPUT_FOLDER = 'INPUT_FOLDER'
-    INPUT_FIELD = 'INPUT_FIELD'
+    INPUT_SUMMITS              = 'INPUT_SUMMITS'
+    INPUT_FOLDER               = 'INPUT_FOLDER'
+    INPUT_FIELD                = 'INPUT_FIELD'
     OUTPUT_CUMULATIVE_VIEWSHED = 'OUTPUT_CUMULATIVE_VIEWSHED'    
     
     
@@ -142,12 +142,15 @@ class ExampleProcessingAlgorithm(QgsProcessingAlgorithm):
     def processAlgorithm(self, parameters, context, feedback):
         """
         Here is where the processing itself takes place.
+        This algorithm displays viewsheds according to the ID of input observation points.
+        It also returns a cumulative viewshed of the previous fields of view selected.
+        All viewshed files must be in one directory without anything else (even a folder)
         """
         
         #Getting values given by the user
-        source_summits = self.parameterAsSource(parameters, self.INPUT_SUMMITS, context)
-        source_folder = self.parameterAsString(parameters, self.INPUT_FOLDER, context)
-        source_field = self.parameterAsFields(parameters, self.INPUT_FIELD, context)
+        source_summits             = self.parameterAsSource(parameters, self.INPUT_SUMMITS, context)
+        source_folder              = self.parameterAsString(parameters, self.INPUT_FOLDER, context)
+        source_field               = self.parameterAsFields(parameters, self.INPUT_FIELD, context)
         output_cumulative_viewshed = self.parameterAsString(parameters, self.OUTPUT_CUMULATIVE_VIEWSHED, context)
         
         #Initializing the String output

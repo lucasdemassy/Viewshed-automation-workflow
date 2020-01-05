@@ -11,8 +11,9 @@ from natsort import natsorted
 
 def rename_file(path):
     """
-    Rename all viewshed files as followed
-    from a folder given by the user: vshed_ID-summit_ID-viewshed
+    Rename all viewshed files
+    from a folder given by the user
+    as followed : vshed_ID-summit_ID-viewshed
     INPUT:
         path: string
     OUTPUT:
@@ -39,7 +40,7 @@ if __name__ == "__main__":
     print("Hello World")
     start1 = time.time()
     
-    main(path = "")
+    rename_file(path = "")
     
     done = time.time()
     elapsed = done - start1
