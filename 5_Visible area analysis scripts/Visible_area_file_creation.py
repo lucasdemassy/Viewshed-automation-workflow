@@ -5,7 +5,7 @@ Created on Thu Jul 25 14:00:06 2019
 @author: lucas
 """
 
-import os000
+import os
 import rasterio
 import numpy
 import time
