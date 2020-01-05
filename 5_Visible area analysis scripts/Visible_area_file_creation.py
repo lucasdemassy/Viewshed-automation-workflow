@@ -5,7 +5,7 @@ Created on Thu Jul 25 14:00:06 2019
 @author: lucas
 """
 
-import os
+import os000
 import rasterio
 import numpy
 import time
@@ -15,7 +15,8 @@ from natsort import natsorted
 def main(viewshed_path, text_file_path):
     """
     This script counts how many pixel with the value 1 there are in any viewshed files located in the input folder path.
-    It creates a text file according to the input file and saves all value in it.
+    It creates a text file according to the input file and saves all values in it.
+    A building can have several summits and so several viewsheds.
     INPUT:
         viewshed_path : string
         text_file_path : string
