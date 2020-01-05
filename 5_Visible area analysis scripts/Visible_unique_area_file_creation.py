@@ -40,9 +40,11 @@ def main(path= 'visible_area_viewshed.txt', path_new_file = 'visible_area_unique
     several      = False    #Take in count if a building has several viewsheds
     for i in range(1, row_count):
         new_viewshed = file[i]
+
         if old_viewshed[0] != new_viewshed[0] and not several:  #This condition means that there is only one viewshed for this building
             new_file.write('{:0.0f};{:0.0f};{:0.0f}'.format(old_viewshed[0], old_viewshed[1], old_viewshed[2]))  #Write the maximum in the text file
             new_file.write("\n")
+
         if old_viewshed[0] == new_viewshed[0] and not several:  #In this case, we have to find the maximum between two viewsheds for the first time for this building
             position_max = i-1              #Initialize maximum position
             maximum      = old_viewshed[2]  #Initialize maximum value
@@ -50,10 +52,12 @@ def main(path= 'visible_area_viewshed.txt', path_new_file = 'visible_area_unique
             if new_viewshed[2] > maximum:   #Change the maximum value and position if the second viewsheds is better
                 maximum      = new_viewshed[2]
                 position_max = i
+
         if old_viewshed[0] == new_viewshed[0] and several:  #In this case, we have to find the maximum between two viewsheds of the same building
             if new_viewshed[2] > maximum:
                 maximum      = new_viewshed[2]
                 position_max = i
+                
         if old_viewshed[0] != new_viewshed[0] and several:  #It means that we have a maximum for a building
             several = False
             new_file.write('{:0.0f};{:0.0f};{:0.0f}'.format(file[position_max][0], file[position_max][1], file[position_max][2]))   #Write the maximum in the text file
