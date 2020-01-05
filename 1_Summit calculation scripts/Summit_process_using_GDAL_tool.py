@@ -65,9 +65,9 @@ class ExampleProcessingAlgorithm(QgsProcessingAlgorithm):
     # used when calling the algorithm from another algorithm, or when
     # calling from the QGIS console.
 
-    INPUT_AREA = 'INPUT_AREA'
-    INPUT_FIELD = 'INPUT_FIELD'
-    INPUT_DEM = 'INPUT_DEM'
+    INPUT_AREA    = 'INPUT_AREA'
+    INPUT_FIELD   = 'INPUT_FIELD'
+    INPUT_DEM     = 'INPUT_DEM'
     OUTPUT_SUMMIT = 'OUTPUT_SUMMIT'
     OUTPUT_FOLDER = 'OUTPUT_FOLDER'
     
@@ -139,6 +139,10 @@ class ExampleProcessingAlgorithm(QgsProcessingAlgorithm):
     def processAlgorithm(self, parameters, context, feedback):
         """
         Here is where the processing itself takes place.
+
+        This function creates a new shapefile which contains summits of each feature of the input area.
+        The new file has a point geometry and has the ID field given as an input.
+        A feature can have several summits if there are pixels with the same altitude.
         """
         source_dem    = self.parameterAsRasterLayer(parameters, self.INPUT_DEM, context)
         source_area   = self.parameterAsVectorLayer(parameters, self.INPUT_AREA, context)
@@ -185,20 +189,17 @@ class ExampleProcessingAlgorithm(QgsProcessingAlgorithm):
         summit_ID    = 0                                                              #Initializing the ID summit
 
         total = 100 / layer_polygon.featureCount()
-        for index, polygon in enumerate(features):  #For each polygon in the input polygon layer with the added max field
-            feedback.setProgress(int(index * total))
+        for index, polygon in enumerate(features):      #For each polygon in the input polygon layer with the added max field
+            feedback.setProgress(int(index * total))    #Progess the loading bar
 
             if feedback.isCanceled():
                 return None
             
-            #feedback.pushInfo("Index: " + str(index))
-            #feedback.pushInfo("Polygon attributes: " + str(polygon.attributes()))
             url_buffer_polygon = output_folder + '/polygon_layer_' + str(index) +'.gpkg'
             if os.path.isfile(url_buffer_polygon):  #If the url already exist
                 os.remove(url_buffer_polygon)       #Removing the file at this url
-                #feedback.pushInfo("Removing: " + url_buffer)
+                
             layer_polygon.select(polygon.id())
-            #feedback.pushInfo("Selected polygon (expect 1): " + str(layer_polygon.selectedFeatureCount())) 
             writer_polygon = QgsVectorFileWriter.writeAsVectorFormat(layer_polygon,url_buffer_polygon,"utf-8", onlySelected=True)
             layer_polygon.deselect(polygon.id())
             
@@ -232,13 +233,9 @@ class ExampleProcessingAlgorithm(QgsProcessingAlgorithm):
                     value, boolean = rlayer.dataProvider().sample(QgsPointXY(x,y), 1)   #the second parameter indicates the band number
                     if value == polygon.attribute("_max"):                              #If the algorithm has found one of the peak
                         feature    = QgsFeature(layer_summit.fields(), summit_ID)       #Creating a QgsFeature object with the summit ID and has the summit layer fields
-                        #feedback.pushInfo("Validity feature :" + str(feature.isValid()))
-                        #feedback.pushInfo("Feature fields: " + str(feature.fields().toList()))
                         summit_ID += 1                                       #Incrementing the summit ID
                         feature.setGeometry(QgsPoint(x,y))                   #Set the geometry of the QgsFeature object
-                        #feedback.pushInfo("Feature geometry: " + str(feature.geometry()))
                         feature.setAttributes(polygon.attributes())          #Set the attributes of the QgsFeature object
-                        #feedback.pushInfo("Feature attributes: " + str(feature.attributes()))
                         feature.deleteAttribute("_max")
                         layer_summit.startEditing()                          #Enabling edition
                         layer_summit.dataProvider().addFeatures([feature])   #Adding summits of the current polygon

@@ -58,12 +58,12 @@ class ExampleProcessingAlgorithm(QgsProcessingAlgorithm):
     # used when calling the algorithm from another algorithm, or when
     # calling from the QGIS console.
 
-    INPUT_POINTS = 'INPUT_POINTS'
-    INPUT_FIELD = 'INPUT_FIELD'
-    INPUT_DEM = 'INPUT_DEM'
+    INPUT_POINTS   = 'INPUT_POINTS'
+    INPUT_FIELD    = 'INPUT_FIELD'
+    INPUT_DEM      = 'INPUT_DEM'
     INPUT_DISTANCE = 'INPUT_DISTANCE'
-    OUTPUT_SUMMIT = 'OUTPUT_SUMMIT'
-    OUTPUT_FOLDER = 'OUTPUT_FOLDER'
+    OUTPUT_SUMMIT  = 'OUTPUT_SUMMIT'
+    OUTPUT_FOLDER  = 'OUTPUT_FOLDER'
     
     
 
@@ -137,11 +137,11 @@ class ExampleProcessingAlgorithm(QgsProcessingAlgorithm):
         Here is where the processing itself takes place.
         """
         source_distance = self.parameterAsDouble(parameters, self.INPUT_DISTANCE, context)
-        source_dem = self.parameterAsRasterLayer(parameters, self.INPUT_DEM, context)
-        source_points = self.parameterAsVectorLayer(parameters, self.INPUT_POINTS, context)
-        source_field = self.parameterAsFields(parameters, self.INPUT_FIELD, context)
-        output_summit = self.parameterAsOutputLayer(parameters, self.OUTPUT_SUMMIT, context)
-        output_folder = self.parameterAsString(parameters, self.OUTPUT_FOLDER, context)
+        source_dem      = self.parameterAsRasterLayer(parameters, self.INPUT_DEM, context)
+        source_points   = self.parameterAsVectorLayer(parameters, self.INPUT_POINTS, context)
+        source_field    = self.parameterAsFields(parameters, self.INPUT_FIELD, context)
+        output_summit   = self.parameterAsOutputLayer(parameters, self.OUTPUT_SUMMIT, context)
+        output_folder   = self.parameterAsString(parameters, self.OUTPUT_FOLDER, context)
         
         
         results = {}
