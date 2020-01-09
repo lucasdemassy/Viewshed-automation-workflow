@@ -1,0 +1,1 @@
+@"%GRASS_PYTHON%" "C:/OSGeo4W64/apps/grass/grass76/scripts/g.exportgtiff.py" %*
