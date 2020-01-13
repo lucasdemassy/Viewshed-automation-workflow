@@ -17,8 +17,7 @@
 #############################################################################
 
 #%module
-#% label:  Export all raster files as tiff which the name begin by "vshed".
-#% description: By default only extensions built against different GIS Library are rebuilt.
+#% description: Export all raster files as tiff which the name begin by "vshed".
 #% keyword: gtiff
 #% keyword: export
 #%end
