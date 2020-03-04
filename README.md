@@ -10,7 +10,8 @@
 5. - Finish README
     - Add title
 
-## Viewshed automation workflow ![Viewhsed](/images/Viewshed_example_reduce.png)
+##  <img src="/images/Viewshed_example.png" alt="Viewshed" width="50"/> Viewshed automation workflow
+
 
 This repository contains multiple python scripts to automatize viewsheds creation from buildings thanks to a DTM (Digital Terrain Model) and a vector layer (point or polygon) of these buildings.
 
