@@ -1,15 +1,3 @@
-# TODO
-1. Done
-2. - Finish README
-    - Speak about g.deletevshed.py
-    - Test it also
-3. - Finish README
-    - Explain it better
-4. - WRITE README
-    - Use QGIS_plugin image
-5. - Finish README
-    - Add title
-
 ##  <img src="/images/Viewshed_example.png" alt="Viewshed" width="80"/> Viewshed automation workflow
 
 
