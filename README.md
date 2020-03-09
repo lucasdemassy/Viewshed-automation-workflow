@@ -10,7 +10,7 @@ The workflow is divided into several steps :
 4. QGIS plugin for viewshed visualization
 5. *(optional)* Analysing statistically viewsheds
 
-![Viewshed_workflow](images/Viewshed_workflow_transparent.png)
+![Viewshed_workflow](images/Viewshed_workflow.png)
 
 A majority of scripts require QGIS or GRASS GIS, both available at this link: https://www.qgis.org/en/site/forusers/download.html
 
