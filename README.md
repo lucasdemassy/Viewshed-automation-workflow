@@ -4,7 +4,7 @@
 This repository contains multiple python scripts to automatize viewsheds creation from buildings thanks to a DTM (Digital Terrain Model) and a vector layer (point or polygon) of these buildings.
 
 The workflow is divided into several steps :
-1. [Observation points calculation](1_Summit calculation scripts/)
+1. Observation points calculation
 2. *(optional)* GRASS files management
 3. *(optional)* Organizing viewshed files
 4. QGIS plugin for viewshed visualization

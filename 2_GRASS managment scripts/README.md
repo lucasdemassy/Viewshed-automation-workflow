@@ -23,6 +23,9 @@ If you have well installed the script, you can simply use the command in the GRA
 Example :
 `g.exportgtiff --ui`
 ## 2. g.deletevshed script
-The user must launch the python script in order to use this command.
+
+This script remove all viewshed files from the GRASS project.
+
+The user must launch the python script in order to use this command like it's shown in the following picture :
 
 ![launch script](../images/GRASS_script.png)
