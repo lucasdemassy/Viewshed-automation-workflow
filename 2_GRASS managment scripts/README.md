@@ -28,4 +28,4 @@ This script remove all viewshed files from the GRASS project.
 
 The user must launch the python script in order to use this command like it's shown in the following picture :
 
-![launch script](../images/GRASS_script.png)
+![launch script](../images/GRASS_script.PNG)
